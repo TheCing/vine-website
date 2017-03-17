@@ -15,7 +15,7 @@ body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%}
 .bgimg {
     background-image: url('forestbridge.jpg');
-    background: #0fffcc;
+    /*background: #0fffcc;*/
     min-height: 100%;
     background-position: center;
     background-size: cover;
@@ -41,6 +41,11 @@ body, html {height: 100%}
 .forgot-screen {
 	display: none;
 }
+
+.clock {
+
+}
+
 a {
   color: #fff;
   transition: all ease-in-out 200ms;
@@ -279,12 +284,12 @@ label:hover:before {
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
 	<div class="w3-display-topleft w3-padding-large w3-xlarge">
-    	<a href="typeClock.html" class="logo">cing</a>
+    	<a href="index.html" class="logo">the vine</a>
 	</div>
 	<div class="w3-display-topright w3-padding-large w3-xlarge">
 		<a id="login">login</a>
 	</div>
-  <div class="w3-display-middle default">
+  <div class="w3-display-middle default clock">
     <h1 class="w3-jumbo w3-animate-top w3-layout-cell" id="hours">12</h1>
     <h1 class="w3-jumbo w3-animate-top w3-layout-cell">:</h1>
     <h1 class="w3-jumbo w3-animate-top w3-layout-cell" id="minutes">00</h1>
@@ -442,17 +447,23 @@ label:hover:before {
     //setInterval(changeBackground(addHexColor(currentHex, 111111))), 1000;
   </script>
   <script>
-    var openDate = new Date("March 30, 2017 12:00:00");
+    var openDate = new Date("April 15, 2017 16:00:00");
     var date = new Date();
     var openDays = (openDate.getTime() / (1000*60*60*24));
     var currentDays = (date.getTime() / (1000*60*60*24));
     var days = Math.round(openDays - currentDays);
-    document.getElementById("timer").innerHTML = days + " days left";
+    document.getElementById("timer").innerHTML = days + " days till <br> next event";
   </script>
   <script>
   	function writeTime() {
   		var today = new Date();
-	    var h = today.getHours();
+      var h;
+      if(today.getHours() > 12) {
+        h = today.getHours() - 12;
+      }
+	    else {
+        h = today.getHours();
+      }
 	    var m = today.getMinutes();
 	    var s = today.getSeconds();
 	    m = checkTime(m);
